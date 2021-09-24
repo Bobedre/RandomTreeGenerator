@@ -7,8 +7,11 @@ namespace RandomTreeGenerator
         static void Main(string[] args)
         {
             TreeGenerator Test = new TreeGenerator();
-            Test.Start();
-
+            ToolBox toolbox = new ToolBox();
+            Node Tree = Test.Start();
+            toolbox.DrawNode(Tree);
+            
+            Console.WriteLine(Node.NumberOfNodesTotal);
         }
     }
 }

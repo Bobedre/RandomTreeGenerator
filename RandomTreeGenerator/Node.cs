@@ -6,35 +6,40 @@ namespace RandomTreeGenerator
 {
     class Node
     {
-        
-        List<Node> Children = new List<Node>(); 
+
+        public static int NumberOfNodesTotal = 1;
         int ChildrenForThisNode = 0;
         Node Parent = null;
-        
+        public List<Node> Children = new List<Node>();  
 
 
-        public Node(int MaxChildrenEachNode, Node Parent, int MaxDepth)
+        public Node(int MaxChildrenEachNode, Node parent, int MaxDepth)
         {
-
+            Parent = parent;
             ChildrenForThisNode = CalculateChildren(MaxChildrenEachNode);
-
-            for (int i = 0; i <= ChildrenForThisNode; i++)
+            //Console.WriteLine("NODE HAS:" + ChildrenForThisNode + " CHILDREN");
+            if (GetDepth() == MaxDepth)
             {
-                Children[i] = new Node(MaxChildrenEachNode, this, MaxDepth);
-                if (Children[i].GetDepth() > MaxDepth)
+               //  Console.WriteLine("DEPTH REACHED");
+                //Do nothing - Stop adding children
+            }
+            else
+            {
+                for (int i = 0; i < ChildrenForThisNode; i++)
                 {
-                    break;
+                    // Console.WriteLine("NEW NODE!");
+                    Children.Add(new Node(MaxChildrenEachNode, this, MaxDepth));
+                    NumberOfNodesTotal++;
                 }
-                Console.WriteLine("NEW NODE!");
+                // Console.WriteLine("MAX CHILDREN REACHED");
             }
         }
 
         private int CalculateChildren(int MaxChildrenEachNode)
         {
-            Random rnd = new Random(); //STACK OVERFLOW!
+            Random rnd = new Random(); 
             ChildrenForThisNode = rnd.Next(0, MaxChildrenEachNode);
             return ChildrenForThisNode;
-
         }
 
         public int GetDepth()
@@ -46,6 +51,7 @@ namespace RandomTreeGenerator
                 depth++;
                 CurrentNode = CurrentNode.Parent;
             }
+            //Console.WriteLine("Depth:" + depth); -- FOR DEBUGGING
             return depth;
         }
     }

@@ -27,6 +27,7 @@ namespace RandomTreeGenerator
         private Node TreeGeneratorMethod(int TreeDepth, int MaxChildrenEachNode)
         {
             Node RootNode = new Node(MaxChildrenEachNode, null, TreeDepth);
+            Console.WriteLine("DONE");
             return RootNode;
         }
     }
