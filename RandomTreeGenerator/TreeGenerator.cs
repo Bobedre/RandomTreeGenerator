@@ -20,6 +20,8 @@ namespace RandomTreeGenerator
             respons = Console.ReadLine();
             int.TryParse(respons, out ChildrenEachNode);
 
+            Console.WriteLine("\n"); //Print Formatting
+
             Node FinalTree = TreeGeneratorMethod(TreeDepth, ChildrenEachNode);
             return FinalTree;
         }
@@ -27,7 +29,6 @@ namespace RandomTreeGenerator
         private Node TreeGeneratorMethod(int TreeDepth, int MaxChildrenEachNode)
         {
             Node RootNode = new Node(MaxChildrenEachNode, null, TreeDepth);
-            Console.WriteLine("DONE");
             return RootNode;
         }
     }

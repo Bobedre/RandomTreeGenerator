@@ -10,34 +10,42 @@ namespace RandomTreeGenerator
         public static int NumberOfNodesTotal = 1;
         int ChildrenForThisNode = 0;
         Node Parent = null;
-        public List<Node> Children = new List<Node>();  
-
+        Random rnd = new Random();
+        public List<Node> Children = new List<Node>();
+        public int Content = 0;
 
         public Node(int MaxChildrenEachNode, Node parent, int MaxDepth)
         {
             Parent = parent;
             ChildrenForThisNode = CalculateChildren(MaxChildrenEachNode);
-            //Console.WriteLine("NODE HAS:" + ChildrenForThisNode + " CHILDREN");
+            Content = CalculateContent();
+            //Console.WriteLine("NODE HAS:" + ChildrenForThisNode + " CHILDREN"); -- FOR DEBUGGING
             if (GetDepth() == MaxDepth)
             {
-               //  Console.WriteLine("DEPTH REACHED");
+                //  Console.WriteLine("DEPTH REACHED"); -- FOR DEBUGGING
                 //Do nothing - Stop adding children
             }
             else
             {
                 for (int i = 0; i < ChildrenForThisNode; i++)
                 {
-                    // Console.WriteLine("NEW NODE!");
+                    // Console.WriteLine("NEW NODE!"); -- FOR DEBUGGING
                     Children.Add(new Node(MaxChildrenEachNode, this, MaxDepth));
                     NumberOfNodesTotal++;
                 }
-                // Console.WriteLine("MAX CHILDREN REACHED");
+                // Console.WriteLine("MAX CHILDREN REACHED"); -- FOR DEBUGGING
             }
+        }
+
+        private int CalculateContent()
+        {
+            int LocalContent;
+            LocalContent = rnd.Next(0, 10);
+            return LocalContent;
         }
 
         private int CalculateChildren(int MaxChildrenEachNode)
         {
-            Random rnd = new Random(); 
             ChildrenForThisNode = rnd.Next(0, MaxChildrenEachNode);
             return ChildrenForThisNode;
         }
