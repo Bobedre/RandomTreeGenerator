@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomTreeGenerator", "RandomTreeGenerator\RandomTreeGenerator.csproj", "{3F3F533F-A79B-46DD-A3DA-F432D340A829}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomTreeGenerator", "RandomTreeGenerator\RandomTreeGenerator.csproj", "{3F3F533F-A79B-46DD-A3DA-F432D340A829}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XunitTests", "XunitTests\XunitTests.csproj", "{07B18E8F-55CB-484D-BC26-D01D51FB0782}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{3F3F533F-A79B-46DD-A3DA-F432D340A829}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F3F533F-A79B-46DD-A3DA-F432D340A829}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F3F533F-A79B-46DD-A3DA-F432D340A829}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07B18E8F-55CB-484D-BC26-D01D51FB0782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07B18E8F-55CB-484D-BC26-D01D51FB0782}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07B18E8F-55CB-484D-BC26-D01D51FB0782}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07B18E8F-55CB-484D-BC26-D01D51FB0782}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
