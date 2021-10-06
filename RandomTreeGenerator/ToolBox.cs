@@ -20,25 +20,34 @@ namespace RandomTreeGenerator
             }
         }
 
-        //NOT FULLY FUNCTIONAL - WILL SOMETIMES THROW NullReferenceException
+
+        //NOT FULLY FUNCTIONAL YET!
         public Node DepthFirstSearch(Node Rootnode, int Goal)
         {
-            Stack<Node> NodesToLookIn = new Stack<Node>();
-
-            //NEEDS TO HAPPEN IN A LOOP UNTIL ?? 
-            NodesToLookIn.Push(RecursiveVisitor(Rootnode));
             
-
-            
-
-            foreach (var Node in NodesToLookIn)
-            {
-                Console.WriteLine("IN STACK: " + Node.Content);
-                if (Node.Content == Goal)
+            Stack<Node> frontier = new Stack<Node>();
+            frontier.Push(Rootnode);
+            while (frontier != null)
+            { 
+                foreach (var node in frontier)
                 {
-                    return Node;
+                    Console.WriteLine("IN STACK: " + node.Content);
+                    if (node.Content == Goal)
+                    {
+                        Console.WriteLine("Goal node found!");
+                        return node;
+                    }
+                    else
+                    {
+                        foreach (var children in node.Children)
+                        {
+                            frontier.Push(children);
+                        }
+                    }
                 }
+                frontier.Pop(); //POPS TOP - NEED TO REMOVE ALREADY LOOKED AT NODE
             }
+            Console.WriteLine("No goal node!");
             return null;
         }
 
