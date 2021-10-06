@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RandomTreeGenerator
 {
-    class TreeGenerator
+    public class TreeGenerator
     {
         int TreeDepth = 0;
         int ChildrenEachNode = 0;

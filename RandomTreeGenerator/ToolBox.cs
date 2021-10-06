@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RandomTreeGenerator
 {
-    class ToolBox
+    public class ToolBox
     {
         public void DrawNode(Node RootNode)
         {
@@ -20,24 +20,38 @@ namespace RandomTreeGenerator
             }
         }
 
-        //NOT FULLY FUNCTIONAL - WILL SOMETIMES THROW NullReferenceException
+
+        //NOT FULLY FUNCTIONAL YET!
         public Node DepthFirstSearch(Node Rootnode, int Goal)
         {
-            Stack<Node> NodesToLookIn = new Stack<Node>();
-            NodesToLookIn.Push(RecursiveVisitor(Rootnode));
-
-            foreach (var Node in NodesToLookIn)
-            {
-                //Console.WriteLine("CONTENT: " + Node.Content);
-                if (Node.Content == Goal)
+            
+            Stack<Node> frontier = new Stack<Node>();
+            frontier.Push(Rootnode);
+            while (frontier != null)
+            { 
+                foreach (var node in frontier)
                 {
-                    return Node;
+                    Console.WriteLine("IN STACK: " + node.Content);
+                    if (node.Content == Goal)
+                    {
+                        Console.WriteLine("Goal node found!");
+                        return node;
+                    }
+                    else
+                    {
+                        foreach (var children in node.Children)
+                        {
+                            frontier.Push(children);
+                        }
+                    }
                 }
+                frontier.Pop(); //POPS TOP - NEED TO REMOVE ALREADY LOOKED AT NODE
             }
+            Console.WriteLine("No goal node!");
             return null;
         }
 
-        private Node RecursiveVisitor(Node Node) //DOES NOT WORK YET!
+        public Node RecursiveVisitor(Node Node)
         {
             foreach (var Child in Node.Children)
             {

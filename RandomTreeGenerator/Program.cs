@@ -12,6 +12,7 @@ namespace RandomTreeGenerator
             toolbox.DrawNode(Tree);
             Console.WriteLine(Node.NumberOfNodesTotal); //Prints total number of nodes in the tree
 
+
             try
             {
                 Node DfsResult = toolbox.DepthFirstSearch(Tree, 5);
